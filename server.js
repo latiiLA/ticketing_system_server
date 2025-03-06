@@ -2,19 +2,14 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-// import authRoute from "./Routes/authRoute.js";
+import userRoute from "./Routes/userRoute.js";
 
 dotenv.config();
 
 const app = express();
 
 // CORS configuration
-const whitelist = [
-  "http://localhost:3000",
-  "http://localhost:4000",
-  "http://10.1.177.21:4000",
-  "http://10.1.15.163:4000",
-];
+const whitelist = ["http://localhost:5173", process.env.PAGEURL];
 
 const corsOptions = {
   origin: (origin, callback) => {
@@ -52,10 +47,4 @@ mongoose
     console.log(err);
   });
 
-// fetchTerminals();
-
-// OracleDB Connection
-// connectToOracle();
-
-// Define routes
-// app.use("/auth", authRoute);
+app.use("/", userRoute);
