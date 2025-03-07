@@ -5,12 +5,12 @@ const userSchema = mongoose.Schema(
     firstName: {
       type: String,
       required: [true, "Please enter firstName."],
-      set: (value) => value.toUpperCase(),
+      uppercase: true,
     },
     lastName: {
       type: String,
       required: [true, "Please enter lastName."],
-      set: (value) => value.toUpperCase(),
+      uppercase: true,
     },
     email: {
       type: String,
@@ -20,7 +20,7 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      lowercase: true,
+      uppercase: true,
       required: [true, "Please enter role"],
       enum: ["USER", "ADMIN"],
     },
